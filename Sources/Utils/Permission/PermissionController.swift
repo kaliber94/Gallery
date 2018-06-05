@@ -33,9 +33,9 @@ class PermissionController: UIViewController {
   func setup() {
     view.addSubview(permissionView)
     permissionView.closeButton.addTarget(self, action: #selector(closeButtonTouched(_:)),
-                                         for: .touchUpInside)
+                                         for: UIControl.Event.touchUpInside)
     permissionView.settingButton.addTarget(self, action: #selector(settingButtonTouched(_:)),
-                                           for: .touchUpInside)
+                                           for: UIControl.Event.touchUpInside)
     permissionView.g_pinEdges()
   }
 
@@ -67,7 +67,7 @@ class PermissionController: UIViewController {
 
   @objc func settingButtonTouched(_ button: UIButton) {
     DispatchQueue.main.async {
-      if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
+      if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
         UIApplication.shared.openURL(settingsURL)
       }
     }

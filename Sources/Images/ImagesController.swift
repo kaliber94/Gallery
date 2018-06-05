@@ -40,9 +40,9 @@ class ImagesController: UIViewController {
 
     view.addSubview(gridView)
 
-    addChildViewController(dropdownController)
+    addChild(dropdownController)
     gridView.insertSubview(dropdownController.view, belowSubview: gridView.topView)
-    dropdownController.didMove(toParentViewController: self)
+    dropdownController.didMove(toParent: self)
 
     gridView.bottomView.addSubview(stackView)
 
@@ -60,10 +60,10 @@ class ImagesController: UIViewController {
     stackView.g_pin(on: .left, constant: 38)
     stackView.g_pin(size: CGSize(width: 56, height: 56))
 
-    gridView.closeButton.addTarget(self, action: #selector(closeButtonTouched(_:)), for: .touchUpInside)
-    gridView.doneButton.addTarget(self, action: #selector(doneButtonTouched(_:)), for: .touchUpInside)
-    gridView.arrowButton.addTarget(self, action: #selector(arrowButtonTouched(_:)), for: .touchUpInside)
-    stackView.addTarget(self, action: #selector(stackViewTouched(_:)), for: .touchUpInside)
+    gridView.closeButton.addTarget(self, action: #selector(closeButtonTouched(_:)), for: UIControl.Event.touchUpInside)
+    gridView.doneButton.addTarget(self, action: #selector(doneButtonTouched(_:)), for: UIControl.Event.touchUpInside)
+    gridView.arrowButton.addTarget(self, action: #selector(arrowButtonTouched(_:)), for: UIControl.Event.touchUpInside)
+    stackView.addTarget(self, action: #selector(stackViewTouched(_:)), for: UIControl.Event.touchUpInside)
 
     gridView.collectionView.dataSource = self
     gridView.collectionView.delegate = self

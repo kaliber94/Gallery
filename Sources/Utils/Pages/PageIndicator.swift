@@ -69,11 +69,11 @@ class PageIndicator: UIView {
 
   func makeButton(_ title: String) -> UIButton {
     let button = UIButton(type: .custom)
-    button.setTitle(title, for: UIControlState())
-    button.setTitleColor(Config.PageIndicator.textColor, for: UIControlState())
-    button.setTitleColor(UIColor.gray, for: .highlighted)
+    button.setTitle(title, for: UIControl.State())
+    button.setTitleColor(Config.PageIndicator.textColor, for: UIControl.State())
+    button.setTitleColor(UIColor.gray, for: UIControl.State.highlighted)
     button.backgroundColor = Config.PageIndicator.backgroundColor
-    button.addTarget(self, action: #selector(buttonTouched(_:)), for: .touchUpInside)
+    button.addTarget(self, action: #selector(buttonTouched(_:)), for: UIControl.Event.touchUpInside)
     button.titleLabel?.font = buttonFont(false)
 
     return button
@@ -104,7 +104,7 @@ class PageIndicator: UIView {
                    delay: 0,
                    usingSpringWithDamping: 0.7,
                    initialSpringVelocity: 0.5,
-                   options: .beginFromCurrentState,
+                   options: UIView.AnimationOptions.beginFromCurrentState,
                    animations: {
                      self.indicator.center.x = self.buttons[index].center.x
                    },
